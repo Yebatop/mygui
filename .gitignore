@@ -23,6 +23,16 @@ end
 end
 
 game:GetService("UserInputService").InputBegan:connect(onKeyPress)
+
+MouseButton1Click:Connect(function()
+FRAMENAME.visible = true
+FRAMENAME.visible = false
+FRAMENAME.visible = false
+FRAMENAME.visible = false
+end
+
+
+
 Window:Button("Goto TaskBoard/Open", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-81, 97.6283875, -84.9000015)
 wait(.45)
