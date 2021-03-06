@@ -1,3 +1,16 @@
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+local runservice = game:GetService("RunService")
+local msg = Instance.new("Message", player.PlayerGui)
+msg.Text = "Script made by Unknown! Press t to destroy message"
+
+
+mouse.KeyDown:Connect(function(key)
+    if key == "t" then
+        msg:Destroy()
+    end
+end)
+
 local Client = {
   Player = {
      InfStam = false,
@@ -11,20 +24,6 @@ wait(.2)
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yebatop/mygui/main/lib",true))()
 local Window = Library:CreateWindow("Mother: TPN")
 local Window2 = Library:CreateWindow("Useless Shit")
-
-local player = game.Players.LocalPlayer
-local mouse = player:GetMouse()
-local runservice = game:GetService("RunService")
-local msg = Instance.new("Message", player.PlayerGui)
-msg.Text = "Script made by Unknown. Press "t" to destroy message"
-
-
-mouse.KeyDown:Connect(function(key)
-    if key == "t" then
-        msg:Destroy()
-    end
-end)
-
 
 
 
