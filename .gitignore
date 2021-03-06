@@ -12,6 +12,17 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yebat
 local Window = Library:CreateWindow("Mother: TPN")
 local Window2 = Library:CreateWindow("Useless Shit")
 
+function onKeyPress(inputObject, gameProcessedEvent)
+if inputObject.KeyCode == Enum.KeyCode.RightControl then
+if FRAMENAME.Visible == false then
+FRAMENAME.Visible = true
+else
+FRAMENAME.Visible = false
+end
+end
+end
+
+game:GetService("UserInputService").InputBegan:connect(onKeyPress)
 Window:Button("Goto TaskBoard/Open", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-81, 97.6283875, -84.9000015)
 wait(.45)
