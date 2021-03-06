@@ -1,41 +1,108 @@
-# Compiled Lua sources
-luac.out
+local Client = {
+  Player = {
+     InfStam = false,
+     NoSweat = false,
+     Alarm = false
+  }
+}
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+script.Name="I Like e621"
+wait(.2)
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/NotZyrex/Zyrex-Hub/master/UI-Library.lua",true))()
+local Window = Library:CreateWindow("Mother: TPN")
+local Window2 = Library:CreateWindow("Useless Shit")
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+Window:Button("Goto TaskBoard/Open", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-81, 97.6283875, -84.9000015)
+wait(.45)
+fireproximityprompt(game:GetService("Workspace").taskblock.ProximityPrompt) --Using Synapse's New fireproximityprompt feature
+end)
 
-# Precompiled Headers
-*.gch
-*.pch
+Window:Button("Find Kid In the Forest", function() --To lazy to make a check so that if you have the task it will complete it (autofarm ig)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Activ.Core.KidTag.HumanoidRootPart.Position)
+end)
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
+Window:Button("Give Locator", function() --Gives you a locator really simple useless though
+game:GetService("Lighting").Locator:Clone().Parent = game.Players.LocalPlayer.Backpack
+end)
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+Window:Button("Give Knife", function() --You can cut off your ear with this
+game:GetService("Lighting").Knife:Clone().Parent = game.Players.LocalPlayer.Backpack
+end)
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+Window:Toggle("No Sweat", function(state) --Just stops your sweat from showing
+Client.Player.NoSweat = state
+end)
 
+Window:Button("No Leave Penalty", function() --You can leave the game with no worries
+game:GetService("Players").LocalPlayer.Backpack.Leave:Destroy()
+game:GetService("Workspace").Leave:Destroy()
+end)
+
+
+local RunService = game:GetService("RunService")
+RunService.Heartbeat:Connect(function()
+if Client.Player.InfStam == true then
+game:GetService("Workspace").Kids[game.Players.LocalPlayer.Name].Stam.Value = 9999  --Method got patched
+end
+end)
+
+local RunService = game:GetService("RunService")
+RunService.Heartbeat:Connect(function()
+    if Client.Player.NoSweat == true then
+game:GetService("Workspace").Kids[game.Players.LocalPlayer.Name].Head.Particle:Destroy()
+end
+end)
+
+Window:Slider('WalkSpeed',16,200,function(value)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+
+
+Window:Slider('JumpPower',50,200,function(value)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+end)
+
+
+Window2:Label('Client Shit')
+
+
+Window2:Toggle("Play Alarm", function(state)
+Client.Player.Alarm = state --Super fucking annoying
+end)
+
+local RunService = game:GetService("RunService")
+RunService.Heartbeat:Connect(function()
+if Client.Player.Alarm == true then
+    game:GetService("Workspace").alarm.Playing = true   
+elseif Client.Player.Alarm == false then
+        game:GetService("Workspace").alarm.Playing = false   
+end
+end)
+
+Window2:Label('FPS Boost')
+
+
+Window2:Button("No Trees", function() --Literally just tps your to the 10+ escape lobbies
+for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+    if (v:IsA("Model")) and (v.Name:find("NormalTree")) then
+        v:Destroy()
+    end
+end
+game:GetService("Workspace").Tree:Destroy()
+end)
+
+Window2:Label('Teleporters')
+
+Window2:Button("High Quality Lobby", function() --Literally just tps your to the 10+ escape lobbies
+game:GetService("TeleportService"):Teleport(6255566779)
+end)
+
+Window2:Button("Start Game (Grace Field)", function() --won't work their is no children to escape
+game:GetService("TeleportService"):Teleport(5126084851)
+end)
+
+Window2:Button("Lobby", function()
+game:GetService("TeleportService"):Teleport(5057286085)
+end)
