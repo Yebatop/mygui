@@ -1,16 +1,3 @@
-local player = game.Players.LocalPlayer
-local mouse = player:GetMouse()
-local runservice = game:GetService("RunService")
-local msg = Instance.new("Message", player.PlayerGui)
-msg.Text = "Script made by Unknown! Press t to destroy message"
-
-
-mouse.KeyDown:Connect(function(key)
-    if key == "t" then
-        msg:Destroy()
-    end
-end)
-
 local Client = {
   Player = {
      InfStam = false,
