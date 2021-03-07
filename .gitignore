@@ -11,7 +11,6 @@ wait(.2)
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yebatop/mygui/main/lib", true))()
 local Window = Library:CreateWindow("Project XL")
 local Window2 = Library:CreateWindow("Misc")
-local Window3 = Library:CreateWindow("Misc")
 
 
 function onKeyPress(inputObject, gameProcessedEvent)
@@ -115,21 +114,20 @@ Window:Slider(
 Window2:Label("Client Shit")
 
 Window2:Toggle(
-    "Play Alarm",
+    "Hide Name",
     function(state)
-        Client.Player.Alarm = state --Super fucking annoying
+        Client.Player.HideName = state --Super fucking annoying
     end
 )
 
-local RunService = game:GetService("RunService")
-RunService.Heartbeat:Connect(
-    function()
-        if Client.Player.Alarm == true then
-            game:GetService("Workspace").alarm.Playing = true
-        elseif Client.Player.Alarm == false then
-            game:GetService("Workspace").alarm.Playing = false
-        end
-    end
+repeat wait() until game:IsLoaded();
+print("Made by DemonSlayer")
+while true do
+wait()
+if game.Players.LocalPlayer.Character.Head:FindFirstChild("Overhead") then
+game.Players.LocalPlayer.Character.Head:FindFirstChild("Overhead"):Destroy()
+end
+end
 )
 
 Window2:Label("FPS Boost")
