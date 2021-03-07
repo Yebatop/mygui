@@ -1,16 +1,18 @@
 local Client = {
     Player = {
-        InfStam = false,
-        NoSweat = false,
-        Alarm = false
+        AllCodes = false,
+        AllFruits = false,
+        HideName = false
     }
 }
 
 script.Name = "I Like e621"
 wait(.2)
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yebatop/mygui/main/lib", true))()
-local Window = Library:CreateWindow("Mother: TPN")
-local Window2 = Library:CreateWindow("Useless Shit")
+local Window = Library:CreateWindow("Project XL")
+local Window2 = Library:CreateWindow("Misc")
+local Window3 = Library:CreateWindow("Misc")
+
 
 function onKeyPress(inputObject, gameProcessedEvent)
     if inputObject.KeyCode == Enum.KeyCode.RightControl then
